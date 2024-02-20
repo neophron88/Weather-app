@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/offset_from_screen"
+    android:background="@drawable/bg_weather_settings"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/offset_from_screen">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_corner_12"
+        android:backgroundTint="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:text="@string/units_of_measurement"
+        android:layout_marginTop="18dp"
+        android:textColor="?attr/backgroundColor"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="12dp">
+
+        <RadioButton
+            android:id="@+id/celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/celsius_text"
+            android:textColor="?attr/backgroundColor"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/fahrenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/fahrenheit_text"
+            android:textColor="?attr/backgroundColor"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/kelvin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/kelvin_text"
+            android:textColor="?attr/backgroundColor"
+            android:textSize="16sp" />
+    </RadioGroup>
+</LinearLayout>

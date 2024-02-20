@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Transition
+        app:constraintSetEnd="@id/scrolling_end"
+        app:constraintSetStart="@id/scrolling_start"
+        app:duration="1000"
+        app:motionInterpolator="linear">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:moveWhenScrollAtTop="true"
+            app:touchAnchorId="@id/weather_list" />
+    </Transition>
+
+    <Transition
+        app:constraintSetEnd="@id/search_end"
+        app:constraintSetStart="@id/search_start"
+        app:duration="300"
+        app:motionInterpolator="easeInOut">
+
+        <OnClick app:targetId="@id/search" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/search_start">
+
+        <Constraint
+            android:id="@id/input_search"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:alpha="0"
+            app:layout_constraintEnd_toEndOf="@+id/action_bar"
+            app:layout_constraintStart_toStartOf="@id/action_bar"
+            app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+        <Constraint
+            android:id="@id/search"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/action_bar"
+            app:layout_constraintEnd_toStartOf="@id/settings"
+            app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/search_end">
+
+        <Constraint
+            android:id="@id/input_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:alpha="1"
+            app:layout_constraintBottom_toBottomOf="@id/action_bar"
+            app:layout_constraintEnd_toEndOf="@id/action_bar"
+            app:layout_constraintStart_toStartOf="@id/action_bar"
+            app:layout_constraintTop_toTopOf="@id/action_bar" />
+
+        <Constraint
+            android:id="@id/search"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/input_search"
+            app:layout_constraintStart_toStartOf="@id/input_search"
+            app:layout_constraintTop_toTopOf="@+id/input_search" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/scrolling_start">
+
+        <Constraint
+            android:id="@id/city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+        <Constraint
+            android:id="@id/today_weather_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            app:layout_constraintBottom_toTopOf="@id/weather_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/city_name" />
+
+        <Constraint
+            android:id="@id/weather_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/today_weather_container" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/scrolling_end">
+
+        <Constraint
+            android:id="@id/city_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="6dp"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            app:layout_constraintBottom_toBottomOf="@+id/action_bar"
+            app:layout_constraintStart_toEndOf="@id/location"
+            app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+        <Constraint
+            android:id="@id/today_weather_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            app:layout_constraintBottom_toTopOf="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/action_bar" />
+
+        <Constraint
+            android:id="@id/weather_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/today_weather_container" />
+
+    </ConstraintSet>
+
+
+</MotionScene>

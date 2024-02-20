@@ -1,4 +1,5 @@
 
+import gradle.kotlin.dsl.accessors._c2e65a47a4a1a36e1d0c36eae1a7c5ad.implementation
 import org.gradle.accessors.dm.LibrariesForLibs
 
 internal val libs = the<LibrariesForLibs>()
@@ -35,9 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
-    buildFeatures {
-        viewBinding = true
-    }
+
 }
 
 dependencies {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.Weather" parent="Base.Theme.Weather.Night">
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+
+
+</resources>

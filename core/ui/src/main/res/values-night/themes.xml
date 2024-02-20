@@ -1,0 +1,12 @@
+<resources>
+    <style name="Base.Theme.Weather.Night" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_100</item>
+        <item name="colorOnSurfaceVariant">@color/purple_200</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="colorSurface">@color/blue_400</item>
+        <item name="colorOnSurface">@color/white</item>
+    </style>
+
+    <style name="Base.Theme.Weather" parent="Base.Theme.Weather.Night"/>
+
+</resources>

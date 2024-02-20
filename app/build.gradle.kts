@@ -1,3 +1,4 @@
+
 plugins {
     id("convention-android-application")
 }
@@ -24,4 +25,9 @@ android {
             applicationIdSuffix = ".debug"
         }
     }
+}
+
+dependencies {
+    implementation(project(":features:main"))
+
 }

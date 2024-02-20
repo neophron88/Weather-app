@@ -7,4 +7,5 @@ android {
 }
 
 dependencies {
+    compileOnly(project(":library"))
 }

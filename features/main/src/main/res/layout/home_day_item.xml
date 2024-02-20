@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/bg_corner_24"
+    android:backgroundTint="?attr/colorSurface"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="18dp"
+    android:paddingVertical="9dp">
+
+
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:text="Среда, 21 февраля "
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.neophron.main.home.views.PeriodOfDayItem
+        android:id="@+id/mid_night"
+        app:name="@string/mid_night"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day" />
+
+    <com.neophron.main.home.views.PeriodOfDayItem
+        android:id="@+id/morning"
+        app:name="@string/morning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mid_night" />
+
+    <com.neophron.main.home.views.PeriodOfDayItem
+        android:id="@+id/afternoon"
+        app:name="@string/afternoon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/morning" />
+
+    <com.neophron.main.home.views.PeriodOfDayItem
+        android:id="@+id/night"
+        app:name="@string/night"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/afternoon" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

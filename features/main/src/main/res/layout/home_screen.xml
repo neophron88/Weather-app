@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_night"
+    app:layoutDescription="@xml/home_screen_scene"
+    tools:context=".home.HomeFragment">
+
+
+    <View
+        android:id="@+id/action_bar"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/settings"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintBottom_toBottomOf="@+id/action_bar"
+        app:layout_constraintEnd_toEndOf="@+id/action_bar"
+        app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/location"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_location"
+        app:layout_constraintBottom_toBottomOf="@+id/action_bar"
+        app:layout_constraintStart_toStartOf="@+id/action_bar"
+        app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+
+    <TextView
+        android:id="@+id/city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:maxLines="1"
+        android:text="Худжанд"
+        android:textColor="?attr/backgroundColor"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_search"
+        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="42dp"
+        android:background="@drawable/bg_corner_12"
+        android:backgroundTint="#104084"
+        android:hint="@string/input_city_name"
+        app:layout_constraintEnd_toEndOf="@+id/action_bar"
+        app:layout_constraintStart_toStartOf="@id/action_bar"
+        app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/search"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@+id/action_bar"
+        app:layout_constraintEnd_toStartOf="@id/settings"
+        app:layout_constraintTop_toTopOf="@+id/action_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/today_weather_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/offset_from_screen"
+        android:paddingBottom="22dp"
+        app:layout_constraintBottom_toTopOf="@id/weather_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/city_name">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_cloud"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/weather_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="24"
+            android:textColor="?attr/backgroundColor"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weather_icon" />
+
+        <TextView
+            android:id="@+id/weather_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/celsius"
+            android:textColor="?attr/backgroundColor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/weather_value"
+            app:layout_constraintTop_toTopOf="@+id/weather_value" />
+
+        <TextView
+            android:id="@+id/weather_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Пасмурно  -4°/ -1° "
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weather_value" />
+
+        <LinearLayout
+            android:id="@+id/today_weather_additional_info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/bg_corner_24"
+            android:backgroundTint="?attr/colorSurface"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="9dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weather_state">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:gravity="center_vertical"
+                android:text="1023 hPa"
+                android:textColor="?attr/backgroundColor"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_pressure" />
+
+            <View style="@style/Spacer" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:gravity="center_vertical"
+                android:text="67 %"
+                android:textColor="?attr/backgroundColor"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_humidity" />
+
+            <View style="@style/Spacer" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:gravity="center_vertical"
+                android:text="5 m/s"
+                android:textColor="?attr/backgroundColor"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_wind" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weather_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/offset_from_screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/today_weather_container"
+        tools:itemCount="1"
+        tools:listitem="@layout/home_today_container_item" />
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

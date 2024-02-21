@@ -1,4 +1,5 @@
 import gradle.kotlin.dsl.accessors._c2e65a47a4a1a36e1d0c36eae1a7c5ad.implementation
+import gradle.kotlin.dsl.accessors._c2e65a47a4a1a36e1d0c36eae1a7c5ad.kapt
 import org.gradle.accessors.dm.LibrariesForLibs
 
 internal val libs = the<LibrariesForLibs>()
@@ -43,16 +44,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":library"))
-    implementation(project(":core:ui"))
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.android.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.recyclerview)
+    implementation(libs.fragment.ktx)
     implementation(libs.swiperefreshlayout)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
     implementation(libs.glide)
     kapt(libs.glide.compiler)
     testImplementation(libs.junit.core)

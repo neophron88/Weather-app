@@ -1,4 +1,4 @@
-package com.neophron.main.home.views
+package com.neophron.main.ui.home.views
 
 import android.content.Context
 import android.util.AttributeSet

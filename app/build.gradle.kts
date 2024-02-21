@@ -25,9 +25,17 @@ android {
             applicationIdSuffix = ".debug"
         }
     }
+
 }
 
 dependencies {
+    implementation(project(":library"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:database"))
+    implementation(project(":core:network"))
+    implementation(project(":core:contract"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(project(":features:main"))
 
 }

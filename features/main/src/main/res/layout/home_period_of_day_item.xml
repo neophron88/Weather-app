@@ -35,6 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center"
         android:fontFamily="@font/montserrat_medium"
         android:text="28 °C"
         android:textColor="?attr/colorOnSurface"
@@ -47,6 +48,7 @@
         android:layout_weight="1"
         android:fontFamily="@font/montserrat_medium"
         android:text="2  m/s"
+        android:gravity="center"
         android:textColor="?attr/colorOnSurface"
         android:textSize="16sp" />
 

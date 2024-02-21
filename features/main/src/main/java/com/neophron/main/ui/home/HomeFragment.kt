@@ -1,16 +1,19 @@
-package com.neophron.main.home
+package com.neophron.main.ui.home
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.neophron.contract.viewModelFactory.extract
+import com.neophron.contract.viewModelFactory.viewModelProvider
 import com.neophron.main.R
 import com.neophron.main.databinding.HomeDayItemBinding
 import com.neophron.main.databinding.HomeScreenBinding
 import com.neophron.main.databinding.HomeTodayContainerItemBinding
 import com.neophron.main.databinding.HomeTodayItemBinding
+import com.neophron.main.di.HomeAssistedFactoryProvider
+import com.neophron.main.ui.weather_settings.WeatherSettingsBottomSheetFragment
 import com.neophron.ui.utils.HorizontalLinearLayoutManager
-import com.neophron.main.weather_settings.WeatherSettingsBottomSheetFragment
 import com.neophron88.library.ktx.InsetType
 import com.neophron88.library.ktx.fitSystemUi
 import com.neophron88.library.ktx.fragment.viewBindings
@@ -19,8 +22,11 @@ import com.neophron88.library.recyclerview.adapterdelegate.ItemsAdapter
 
 class HomeFragment : Fragment(R.layout.home_screen) {
 
-    private val binding: HomeScreenBinding by viewBindings()
 
+    private val viewModel: HomeViewModel by viewModelProvider {
+        extract<HomeAssistedFactoryProvider>().getHomeFactory().create()
+    }
+    private val binding: HomeScreenBinding by viewBindings()
     private val weatherAdapter by viewLifeCycle { weatherAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

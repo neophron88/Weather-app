@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_night"
     app:layoutDescription="@xml/home_screen_scene"
-    tools:context=".home.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
 
     <View

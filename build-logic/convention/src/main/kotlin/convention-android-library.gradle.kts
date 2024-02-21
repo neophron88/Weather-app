@@ -1,5 +1,6 @@
 
 import gradle.kotlin.dsl.accessors._c2e65a47a4a1a36e1d0c36eae1a7c5ad.implementation
+import gradle.kotlin.dsl.accessors._c2e65a47a4a1a36e1d0c36eae1a7c5ad.kapt
 import org.gradle.accessors.dm.LibrariesForLibs
 
 internal val libs = the<LibrariesForLibs>()
@@ -7,6 +8,7 @@ internal val libs = the<LibrariesForLibs>()
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -40,8 +42,12 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.fragment.ktx)
     implementation(libs.splashscreen)
     implementation(libs.android.material)
     testImplementation(libs.junit.core)

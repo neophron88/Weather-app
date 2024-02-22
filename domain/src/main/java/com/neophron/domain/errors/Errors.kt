@@ -6,6 +6,7 @@ sealed class ErrorType  {
     object BackendFailed : ErrorType()
     object AuthorizationFailed : ErrorType()
     object NoSuchCity : ErrorType()
+    object EmptySearchField : ErrorType()
     object EmptyList : ErrorType()
     class Unknown(val e: Exception? = null) : ErrorType()
 }

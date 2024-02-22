@@ -1,16 +1,27 @@
 <resources>
 
-    <string name="celsius">°C</string>
     <string name="celsius_text">Цельсия </string>
-    <string name="fahrenheit">°F</string>
+    <string name="celsius">°C</string>
+    <string name="celsius_placeholder">%.1f°C</string>
+
     <string name="fahrenheit_text">Фаренгейт</string>
+    <string name="fahrenheit">°F</string>
+    <string name="fahrenheit_placeholder">%.1f°F</string>
+
+
     <string name="kelvin">K</string>
     <string name="kelvin_text">Кельвин</string>
-    <string name="today">Today</string>
+    <string name="kelvin_placeholder">%.1f K</string>
+
+    <string name="temperature_placeholder">%d°</string>
+    <string name="percent_placeholder">%d %%</string>
+    <string name="pressure_placeholder">%d hPa</string>
+    <string name="wind_placeholder">%.1f м/с</string>
+    <string name="today">Сегодня</string>
     <string name="morning">Утром</string>
     <string name="mid_night">Ночью</string>
     <string name="afternoon">Днем</string>
-    <string name="night">Ночью</string>
+    <string name="night">Вечером</string>
     <string name="input_city_name">Введите название города</string>
     <string name="units_of_measurement">Единицы измерения:</string>
 </resources>

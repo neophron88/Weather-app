@@ -7,6 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.viewbinding.ViewBinding
 import kotlin.reflect.KClass
 
+/**
+ * Copyright (C) 2022 neophron88
+ */
+
+
 @DslMarker
 annotation class AdapterDelegateDslMarker
 
@@ -139,7 +144,7 @@ class ViewHolderBuilderDsl<I : Any, VB : ViewBinding> {
     internal fun build(view: View) = DslViewHolder(
         view,
         binding ?: throwFunctionNotInvoked("viewbinding"),
-        bindingCreated ?: throwFunctionNotInvoked("setupviewbinding"),
+        bindingCreated,
         onBind ?: throwFunctionNotInvoked("onbind"),
         onBindPayloads,
         unBind
@@ -150,7 +155,7 @@ class ViewHolderBuilderDsl<I : Any, VB : ViewBinding> {
 class DslViewHolder<T : Any, VB : ViewBinding>(
     view: View,
     private val createBinding: (View) -> VB,
-    private val onBindingCreated: DslViewHolder<T, VB>.() -> Unit,
+    private val onBindingCreated: (DslViewHolder<T, VB>.() -> Unit)?,
     private val onBindItem: DslViewHolder<T, VB>.() -> Unit,
     private val onBindItemPayloads: (DslViewHolder<T, VB>.(payloads: MutableList<Any>) -> Unit)?,
     private val unBindItem: (DslViewHolder<T, VB>.() -> Unit)?,
@@ -159,7 +164,7 @@ class DslViewHolder<T : Any, VB : ViewBinding>(
     val binding = createBinding(view)
 
     init {
-        onBindingCreated()
+        onBindingCreated?.invoke(this)
     }
 
     override fun onBind(item: T) {

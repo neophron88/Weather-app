@@ -1,4 +1,4 @@
-package com.neophron.main.ui
+package com.neophron.main.utils
 
 import androidx.lifecycle.MutableLiveData
 import com.neophron88.library.ktx.require
@@ -11,7 +11,7 @@ inline fun <T> MutableLiveData<T>.updateValue(
 }
 
 inline fun <T : Any> MutableSingleUseData<T>.updateValue(
-    block: (T) -> T
+    block: (T?) -> T
 ) {
-    value = block(this.value.require())
+    value = block(this.value)
 }

@@ -7,6 +7,9 @@ import androidx.annotation.MenuRes
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+/**
+ * Copyright (C) 2022 neophron88
+ */
 
 
 typealias OnMenuItemSelected = (item: MenuItem) -> Boolean

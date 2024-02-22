@@ -17,15 +17,19 @@ import com.neophron.domain.results.WeatherResult
 import com.neophron.network.current_weather.CurrentWeatherService
 import com.neophron.network.several_days_weather.SeveralDaysWeatherService
 import com.neophron88.library.ktx.require
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.sync.Mutex
 
 class OfflineFirstWeatherRepositoryImpl(
     private val currentWeatherService: CurrentWeatherService,
     private val currentWeatherDao: CurrentWeatherDao,
     private val daysWeatherService: SeveralDaysWeatherService,
     private val daysWeatherDao: DaysWeatherDao,
-    private val preference: WeatherPreference
+    private val preference: WeatherPreference,
+    private val applicationScope: CoroutineScope
 ) : WeatherRepository {
 
     override fun getCurrentWeather(): Flow<WeatherResult<Weather>> = flow {
@@ -33,12 +37,13 @@ class OfflineFirstWeatherRepositoryImpl(
         val cityName = preference.getCity().name
         if (cityName != null) runCatch(
             run = {
-                val response = currentWeatherService.getTodayWeatherByCityName(
+                val response = currentWeatherService.getWeatherByCityName(
                     cityName,
                     preference.getTempUnit().toApiRepresentation(),
                     preference.getLanguage().toApiRepresentation()
                 )
                 currentWeatherDao.refreshCurrrentWeather(listOf(response.toEntity()))
+
             },
             failed = { emit(WeatherResult.Error(it.toErrorType())) }
         )
@@ -86,13 +91,14 @@ class OfflineFirstWeatherRepositoryImpl(
         var result: WeatherResult<Unit> = WeatherResult.Success(Unit)
         runCatch(
             run = {
-                val response = daysWeatherService.getWeatherByCityName(
-                    cityName,
-                    preference.getTempUnit().toApiRepresentation(),
-                    preference.getLanguage().toApiRepresentation()
-                )
-                daysWeatherDao.refreshDaysWeather(response.toEntities())
-                preference.saveCity(WeatherSettings.CityParam(cityName))
+                applicationScope.async {
+                    fetchData(
+                        cityName,
+                        preference.getTempUnit().toApiRepresentation(),
+                        preference.getLanguage().toApiRepresentation()
+                    )
+                    preference.saveCity(WeatherSettings.CityParam(cityName))
+                }.await()
             },
             failed = { result = WeatherResult.Error(it.toErrorType()) }
         )
@@ -103,17 +109,31 @@ class OfflineFirstWeatherRepositoryImpl(
         var result: WeatherResult<Unit> = WeatherResult.Success(Unit)
         runCatch(
             run = {
-                val response = daysWeatherService.getWeatherByCityName(
-                    preference.getCity().name.require(),
-                    unit.toApiRepresentation(),
-                    preference.getLanguage().toApiRepresentation()
-                )
-                daysWeatherDao.refreshDaysWeather(response.toEntities())
-                preference.saveTempUnit(unit)
+                applicationScope.async {
+                    fetchData(
+                        preference.getCity().name.require(),
+                        unit.toApiRepresentation(),
+                        preference.getLanguage().toApiRepresentation()
+                    )
+                    preference.saveTempUnit(unit)
+                }.await()
             },
             failed = { result = WeatherResult.Error(it.toErrorType()) }
         )
         return result
+    }
+
+    private suspend fun fetchData(
+        cityName: String,
+        units: String?,
+        lang: String,
+    ) {
+
+        val currentResponse = currentWeatherService.getWeatherByCityName(cityName, units, lang)
+        currentWeatherDao.refreshCurrrentWeather(listOf(currentResponse.toEntity()))
+
+        val daysResponse = daysWeatherService.getWeatherByCityName(cityName, units, lang)
+        daysWeatherDao.refreshDaysWeather(daysResponse.toEntities())
     }
 
 }

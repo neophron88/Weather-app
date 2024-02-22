@@ -2,23 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="80dp"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingHorizontal="4dp"
     android:paddingVertical="8dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/value"
+        android:id="@+id/temperature"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="4dp"
         android:fontFamily="@font/montserrat_medium"
         android:gravity="center"
-        android:text="28 °C"
+        tools:text="28 °C"
         android:textColor="?attr/colorOnSurface"
         android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_marginTop="8dp"
@@ -32,7 +34,7 @@
         android:drawablePadding="4dp"
         android:fontFamily="@font/montserrat_medium"
         android:gravity="center"
-        android:text="17:00"
+        tools:text="17:00"
         android:textColor="?attr/colorOnSurface"
         android:textSize="18sp" />
 </LinearLayout>

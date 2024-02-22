@@ -5,6 +5,9 @@ package com.neophron88.library.ktx.fragment
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+/**
+ * Copyright (C) 2022 neophron88
+ */
 
 /**
  * A delegate that provides your viewbinding within a Fragment by lazy.

@@ -1,15 +1,14 @@
-package com.neophron.main.ui.home
+package com.neophron.main.ui.weather_settings
 
+import com.neophron.domain.models.TempUnit
 import com.neophron.main.domain.models.CurrentWeatherDisplay
 import com.neophron.main.domain.models.DisplayWeather
 
-data class HomeUiState(
+data class SettingsUiState(
     val isInProgress: Boolean = false,
-    val current: CurrentWeatherDisplay? = null,
-    val list: List<DisplayWeather> = listOf()
+    val unit: TempUnit? = null
 ) {
     val isNotInProgress: Boolean get() = !isInProgress
-    val isEmpty: Boolean get() = list.isEmpty()
 
 }
 

@@ -10,6 +10,7 @@ android {
 
 dependencies {
     implementation(libs.recyclerview)
-    compileOnly(libs.lifecycle.runtime)
+    implementation(libs.lifecycle.runtime)
+    implementation(libs.fragment.ktx)
     compileOnly(libs.viewBinding)
 }

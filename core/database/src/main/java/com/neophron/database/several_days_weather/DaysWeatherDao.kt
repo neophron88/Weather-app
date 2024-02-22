@@ -15,7 +15,7 @@ abstract class DaysWeatherDao {
         insertDaysWeather(entities)
     }
 
-    @Query("DELETE FROM today_weather_table")
+    @Query("DELETE FROM day_weather_table")
     internal abstract suspend fun deleteDaysWeather()
 
     @Insert

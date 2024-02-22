@@ -1,4 +1,7 @@
 package com.neophron88.library.ktx.fragment
+/**
+ * Copyright (C) 2022 neophron88
+ */
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle

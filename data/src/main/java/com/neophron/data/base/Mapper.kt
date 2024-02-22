@@ -16,6 +16,7 @@ import com.neophron.network.several_days_weather.DaysWeatherDTOResponse
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.util.concurrent.TimeUnit
 
 
 fun CurrentWeatherResponse.toEntity() = CurrentWeatherEntity(
@@ -28,17 +29,18 @@ fun CurrentWeatherResponse.toEntity() = CurrentWeatherEntity(
     pressure = this.info.pressure,
     humidity = this.info.humidity,
     windSpeed = this.wind.speed,
-    description = this.description.description,
-    iconUrl = this.description.icon.toUrl(),
+    description = this.description[0].description,
+    iconUrl = this.description[0].icon.toUrl(),
     timeUnix = this.timeInUnix
 )
 
 fun DaysWeatherDTOResponse.toEntities() =
-    listOfWeatherByHourAndDay.map { it.toEntity() }
+    listOfWeatherByHourAndDay.map {
+        it.toEntity(this.city.name) }
 
-fun DayWeatherDTO.toEntity() = DayWeatherEntity(
+fun DayWeatherDTO.toEntity(city:String) = DayWeatherEntity(
     id = AUTO_GENERATE,
-    cityName = this.city.name,
+    cityName = city,
     temperature = this.info.temperature,
     tempMin = this.info.tempMin,
     tempMax = this.info.tempMax,
@@ -46,8 +48,8 @@ fun DayWeatherDTO.toEntity() = DayWeatherEntity(
     pressure = this.info.pressure,
     humidity = this.info.humidity,
     windSpeed = this.wind.speed,
-    description = this.description.description,
-    iconUrl = this.description.icon.toUrl(),
+    description = this.description[0].description,
+    iconUrl = this.description[0].icon.toUrl(),
     timeUnix = this.timeInUnix
 )
 
@@ -97,7 +99,9 @@ fun WeatherSettings.LanguageParam.toApiRepresentation() =
     }
 
 
-fun Long.toLocalDateTime(): LocalDateTime =
-    Instant.ofEpochMilli(this).atZone(ZoneId.systemDefault()).toLocalDateTime();
+fun Long.toLocalDateTime(): LocalDateTime {
+    val inMillis = TimeUnit.SECONDS.toMillis(this)
+    return Instant.ofEpochMilli(inMillis).atZone(ZoneId.systemDefault()).toLocalDateTime();
+}
 
 fun String.toUrl(): String = Icon.url.replace(Icon.placeHolder, this)

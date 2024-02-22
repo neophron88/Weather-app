@@ -1,7 +1,7 @@
 package com.neophron88.library.ktx
 
 
-inline fun <T, R> T.map(block: T.() -> R): R = this.block()
+inline fun <T, R> T.valueMap(block: T.() -> R): R = this.block()
 
 
 inline fun <reified T> Any.takeAs(): T =

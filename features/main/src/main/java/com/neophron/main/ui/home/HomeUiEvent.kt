@@ -1,8 +1,8 @@
 package com.neophron.main.ui.home
 
-import androidx.annotation.StringRes
+import com.neophron.domain.errors.ErrorType
 
 sealed class HomeUiEvent {
-    class ToastMessage(@StringRes val messageRes: Int) : HomeUiEvent()
+    class Error(val type: ErrorType) : HomeUiEvent()
 }
 

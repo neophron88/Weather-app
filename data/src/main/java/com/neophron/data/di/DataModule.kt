@@ -11,6 +11,7 @@ import com.neophron.network.current_weather.CurrentWeatherService
 import com.neophron.network.several_days_weather.SeveralDaysWeatherService
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineScope
 import javax.inject.Singleton
 
 
@@ -30,9 +31,10 @@ class DataModule {
         currentWeatherDao: CurrentWeatherDao,
         daysWeatherService: SeveralDaysWeatherService,
         daysWeatherDao: DaysWeatherDao,
-        preference: WeatherPreference
+        preference: WeatherPreference,
+        applicationScope:CoroutineScope
     ): WeatherRepository = OfflineFirstWeatherRepositoryImpl(
-        currentWeatherService, currentWeatherDao, daysWeatherService, daysWeatherDao, preference
+        currentWeatherService, currentWeatherDao, daysWeatherService, daysWeatherDao, preference,applicationScope
     )
 
 }

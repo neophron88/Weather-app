@@ -10,18 +10,18 @@ class DaysWeatherDTOResponse(
     @field:Json(name = "cnt")
     val countOfWeatherByHour: Int,
     @field:Json(name = "list")
-    val listOfWeatherByHourAndDay: List<DayWeatherDTO>
+    val listOfWeatherByHourAndDay: List<DayWeatherDTO>,
+    @field:Json(name = "city")
+    val city: CityDTO,
 )
 
 class DayWeatherDTO(
     @field:Json(name = "dt")
     val timeInUnix: Long,
     @field:Json(name = "weather")
-    val description: DescriptionDTO,
+    val description: List<DescriptionDTO>,
     @field:Json(name = "main")
     val info: WeatherInfoDTO,
     @field:Json(name = "wind")
     val wind: WindDTO,
-    @field:Json(name = "city")
-    val city: CityDTO,
 )

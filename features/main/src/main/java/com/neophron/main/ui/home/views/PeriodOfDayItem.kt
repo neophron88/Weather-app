@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
 import com.neophron.main.R
 import com.neophron.main.databinding.HomePeriodOfDayItemBinding
 
@@ -40,4 +41,30 @@ class PeriodOfDayItem @JvmOverloads constructor(
     }
 
 
+    var periodName: String
+        get() = binding.periodName.text.toString()
+        set(value) {
+            binding.periodName.text = value
+        }
+
+    var iconUrl: String = ""
+        get() = field
+        set(value) {
+            field = value
+            Glide.with(context)
+                .load(value)
+                .into(binding.icon)
+        }
+
+    var temperature: String
+        get() = binding.temperature.text.toString()
+        set(value) {
+            binding.temperature.text = value
+        }
+
+    var windSpeed: String
+        get() = binding.wind.text.toString()
+        set(value) {
+            binding.wind.text = value
+        }
 }

@@ -4,6 +4,10 @@ import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
 import androidx.viewbinding.ViewBinding
 
+/**
+ * Copyright (C) 2022 neophron88
+ */
+
 
 /**
  * A delegate that provide your viewbinding within an Activity by lazy.

@@ -21,7 +21,7 @@ android {
         }
 
         debug {
-            resValue("string", "app_name", "Debug Weathep app")
+            resValue("string", "app_name", "Debug Weather app")
             applicationIdSuffix = ".debug"
         }
     }

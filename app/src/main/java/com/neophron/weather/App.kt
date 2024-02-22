@@ -2,6 +2,7 @@ package com.neophron.weather
 
 import android.app.Application
 import com.neophron.contract.DependencyProvider
+import com.neophron.weather.di.DaggerAppComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -13,6 +14,6 @@ class App : Application(), DependencyProvider {
     }
 
     override val dependency: Any by lazy {
-
+        DaggerAppComponent.factory().create(this, applicationScope)
     }
 }

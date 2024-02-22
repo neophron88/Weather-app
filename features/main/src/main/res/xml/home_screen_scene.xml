@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/tools">
 
 
     <Transition
+        android:id="@+id/scroll_transition"
         app:constraintSetEnd="@id/scrolling_end"
         app:constraintSetStart="@id/scrolling_start"
         app:duration="1000"
@@ -11,71 +13,10 @@
         <OnSwipe
             app:dragDirection="dragUp"
             app:moveWhenScrollAtTop="true"
-            app:touchAnchorId="@id/weather_list" />
+            app:touchAnchorId="@id/refresh_layout" />
     </Transition>
 
-    <Transition
-        app:constraintSetEnd="@id/search_end"
-        app:constraintSetStart="@id/search_start"
-        app:duration="300"
-        app:motionInterpolator="easeInOut">
 
-        <OnClick app:targetId="@id/search" />
-
-    </Transition>
-
-    <ConstraintSet android:id="@+id/search_start">
-
-        <Constraint
-            android:id="@id/input_search"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:alpha="0"
-            app:layout_constraintEnd_toEndOf="@+id/action_bar"
-            app:layout_constraintStart_toStartOf="@id/action_bar"
-            app:layout_constraintTop_toTopOf="@+id/action_bar" />
-
-        <Constraint
-            android:id="@id/search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/action_bar"
-            app:layout_constraintEnd_toStartOf="@id/settings"
-            app:layout_constraintTop_toTopOf="@+id/action_bar" />
-
-    </ConstraintSet>
-
-    <ConstraintSet android:id="@+id/search_end">
-
-        <Constraint
-            android:id="@id/input_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:alpha="1"
-            app:layout_constraintBottom_toBottomOf="@id/action_bar"
-            app:layout_constraintEnd_toEndOf="@id/action_bar"
-            app:layout_constraintStart_toStartOf="@id/action_bar"
-            app:layout_constraintTop_toTopOf="@id/action_bar" />
-
-        <Constraint
-            android:id="@id/search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/input_search"
-            app:layout_constraintStart_toStartOf="@id/input_search"
-            app:layout_constraintTop_toTopOf="@+id/input_search" />
-
-    </ConstraintSet>
 
     <ConstraintSet android:id="@+id/scrolling_start">
 
@@ -95,6 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:alpha="1"
+            app:visibilityMode="ignore"
             app:layout_constraintBottom_toTopOf="@id/weather_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,6 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/today_weather_container" />
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/scrolling_end">
@@ -118,7 +61,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="6dp"
             android:scaleX=".7"
+            app:visibilityMode="ignore"
             android:scaleY=".7"
+            motion:visibilityMode="ignore"
             app:layout_constraintBottom_toBottomOf="@+id/action_bar"
             app:layout_constraintStart_toEndOf="@id/location"
             app:layout_constraintTop_toTopOf="@+id/action_bar" />
@@ -128,6 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:alpha="0"
+            motion:visibilityMode="ignore"
             app:layout_constraintBottom_toTopOf="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

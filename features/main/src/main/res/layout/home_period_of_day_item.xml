@@ -31,15 +31,15 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/value"
+        android:id="@+id/temperature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center"
         android:fontFamily="@font/montserrat_medium"
-        android:text="28 °C"
+        android:gravity="center"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:text="28 °C" />
 
     <TextView
         android:id="@+id/wind"
@@ -47,9 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/montserrat_medium"
-        android:text="2  m/s"
         android:gravity="center"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:text="2  m/s" />
 
 </merge>

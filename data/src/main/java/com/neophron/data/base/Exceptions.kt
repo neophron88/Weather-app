@@ -30,6 +30,6 @@ internal fun Exception.toErrorType(): ErrorType = when (this) {
     }
 
     is IOException -> ErrorType.NoConnection
-    else -> ErrorType.Unknown(this)
+    else -> throw this
 }
 

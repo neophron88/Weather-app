@@ -26,11 +26,12 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:fontFamily="@font/montserrat_medium"
-            android:text="Mar,9"
+            tools:text="Mar,9"
             android:textColor="?attr/colorOnSurface"
             android:textSize="16sp" />
     </FrameLayout>

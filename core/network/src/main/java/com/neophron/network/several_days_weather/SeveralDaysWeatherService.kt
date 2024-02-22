@@ -2,23 +2,24 @@ package com.neophron.network.several_days_weather
 
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface SeveralDaysWeatherService {
 
 
-    @GET("forecast?q={city_name}&units={units}&lang={lang}")
+    @GET("forecast")
     suspend fun getWeatherByCityName(
-        @Path("city_name") cityName: String,
-        @Path("units") units: String?,
-        @Path("lang") lang: String,
+        @Query("q") cityName: String,
+        @Query("units") units: String?,
+        @Query("lang") lang: String,
     ): DaysWeatherDTOResponse
 
-    @GET("forecast?lat={lat}&lon={lon}&units=metric&lang={lang}")
+    @GET("forecast")
     suspend fun getTodayByGeoCoordinates(
-        @Path("lat") lat: String,
-        @Path("lon") lon: String,
-        @Path("units") units: String,
-        @Path("lang") lang: String,
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String,
+        @Query("lang") lang: String,
     ): DaysWeatherDTOResponse
 
 }
